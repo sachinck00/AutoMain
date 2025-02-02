@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1037305896498",
+    "project_id": "automain-database",
+    "storage_bucket": "automain-database.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037305896498:android:4260d80d799af4ea4a662b",
+        "android_client_info": {
+          "package_name": "com.example.automain"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOfPIucbq-16HwxmqV_cX774a113AlPnY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkBlue"
+    tools:context=".auth.LoginActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_margin="15dp"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:src="@drawable/account" />
+        <EditText
+            android:id="@+id/loginEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Email"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:background="@drawable/input_bg"
+            android:padding="15dp"
+            android:layout_marginTop="20dp"
+            android:inputType="text"/>
+        <EditText
+            android:id="@+id/loginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter password"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:background="@drawable/input_bg"
+            android:padding="15dp"
+            android:layout_marginTop="20dp"
+            android:inputType="textPassword"/>
+
+        <TextView
+            android:id="@+id/forgotPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Forgot password ? "
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            android:layout_margin="15dp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/loginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login now"
+            android:textColor="@color/darkBlue"
+            android:backgroundTint="@color/white"
+            android:textSize="20dp"
+            android:padding="10dp"
+            android:layout_marginTop="10dp" />
+        <TextView
+            android:id="@+id/navigateToRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="If you dont have an account ? click here . ."
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:layout_margin="15dp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+</ScrollView>
