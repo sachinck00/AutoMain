@@ -9,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.example.automain.MainActivity
 import com.example.automain.R
 import com.example.automain.auth.LoginActivity
 import com.example.automain.databinding.ActivityUserBinding
@@ -34,7 +35,7 @@ class UserActivity : AppCompatActivity() {
         binding.logout.setOnClickListener {
             auth.signOut()
             Toast.makeText(this, "signout", Toast.LENGTH_SHORT)
-            val intent = Intent(this , LoginActivity::class.java)
+            val intent = Intent(this , MainActivity::class.java)
             startActivity(intent)
             finish()
         }

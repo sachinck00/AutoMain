@@ -33,36 +33,7 @@ class LoginActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
-        val currentUser = auth.currentUser
-        if(currentUser != null){
-            currentUser.let {
-                val email = currentUser.email
-                db.collection("users")
-                    .whereEqualTo("email", email)
-                    .get()
-                    .addOnSuccessListener { documents ->
-                        for (document in documents) {
-                            if (document.get("isAdmin") == true) {
-                                val intent = Intent(this, AdminActivity::class.java)
-                                startActivity(intent)
-                            }else{
-                                val intent = Intent(this, UserActivity::class.java)
-                                startActivity(intent)
-                            }
-                            Toast.makeText(
-                                this,
-                                "welcome ${document.get("name")}",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            finish()
-                        }
-                    }
-            }
 
-        }else{
-            /*val intent = Intent(this, LoginActivity::class.java)
-             startActivity(intent)*/
-        }
 
 
         binding.loginBtn.setOnClickListener{
