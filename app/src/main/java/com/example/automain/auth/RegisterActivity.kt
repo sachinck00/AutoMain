@@ -39,7 +39,7 @@ class RegisterActivity : AppCompatActivity() {
             val un = binding.userName.text.toString()
             val phone = binding.phone.text.toString()
 
-            val isAdmin = 0
+            val isAdmin  = 0
 
 
             if (emailId.isNotEmpty() && password.isNotEmpty() && phone.isNotEmpty() &&  un.isNotEmpty() && confirmPassword.isNotEmpty() ){

@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
                             if (document.get("isAdmin") == true) {
                                 val intent = Intent(this, AdminActivity::class.java)
                                 startActivity(intent)
-                            }else{
+                            }else {
                                 val intent = Intent(this, UserActivity::class.java)
                                 startActivity(intent)
                             }
