@@ -5,7 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.automain.R
+import com.example.automain.admin.serviceList.ServiceAdapter
+import com.example.automain.databinding.FragmentServicesBinding
+import com.google.api.Context
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 private const val ARG_PARAM1 = "param1"
@@ -13,6 +20,13 @@ private const val ARG_PARAM2 = "param2"
 
 
 class Services : Fragment() {
+    private lateinit var binding: FragmentServicesBinding
+    private lateinit var db: FirebaseFirestore
+    private lateinit var auth: FirebaseAuth
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var serviceAdapter: ServiceAdapter
+    private val serviceItemList = mutableListOf<com.example.automain.admin.serviceList.Services>()
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -29,21 +43,40 @@ class Services : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_services, container, false)
+        binding = FragmentServicesBinding.inflate(layoutInflater)
+        db = FirebaseFirestore.getInstance()
+        auth = FirebaseAuth.getInstance()
+
+        recyclerView = binding.recyclerView
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        serviceAdapter = ServiceAdapter(serviceItemList)
+        recyclerView.adapter = serviceAdapter
+
+        fetchFirestoreData()
+
+        return binding.root
+    }
+    private fun fetchFirestoreData() {
+        db.collection("services")
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+                if (!querySnapshot.isEmpty) {
+                    for (document in querySnapshot.documents) {
+                        val item = document.toObject(com.example.automain.admin.serviceList.Services::class.java)
+                        if (item != null) {
+                            serviceItemList.add(item)
+                        }
+                    }
+                    serviceAdapter.notifyDataSetChanged() // Notify adapter that data has changed
+                }
+            }
+            .addOnFailureListener {
+
+            }
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Services.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
         fun newInstance(param1: String, param2: String) =
             Services().apply {
                 arguments = Bundle().apply {

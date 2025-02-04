@@ -11,9 +11,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.automain.MainActivity
 import com.example.automain.R
+import com.example.automain.admin.utils.MenuActivity
 import com.example.automain.auth.LoginActivity
 import com.example.automain.databinding.ActivityUserBinding
 import com.example.automain.user.fragments.Services
+import com.example.automain.user.utils.UserMenuActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class UserActivity : AppCompatActivity() {
@@ -32,15 +34,20 @@ class UserActivity : AppCompatActivity() {
             insets
         }
         auth = FirebaseAuth.getInstance()
-        binding.logout.setOnClickListener {
-            auth.signOut()
-            Toast.makeText(this, "signout", Toast.LENGTH_SHORT)
-            val intent = Intent(this , MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+
+        //setting a default fragment
+        val defaultFragment = Services()
+        fragmentManager = supportFragmentManager
+        fragmentManager.beginTransaction().replace(R.id.frame , defaultFragment).commit()
+
+        //switching between fragments
         binding.services.setOnClickListener {
             replaceFragment(Services())
+        }
+
+        binding.menu.setOnClickListener {
+            var intent = Intent(this, UserMenuActivity::class.java)
+            startActivity(intent)
         }
     }
 

@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:orientation="vertical"
+    android:id="@+id/main"
     android:background="@color/darkBlue"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin.utils.MenuActivity">
+    tools:context=".user.utils.UserMenuActivity">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
             android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hi . .  Admin"
+            android:text="Hi . .  User"
             android:textColor="@color/white"
             android:textSize="30dp" />
     </RelativeLayout>
@@ -65,22 +65,7 @@
             android:textColor="@color/white"
             android:textSize="20dp" />
     </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-        <TextView
-            android:id="@+id/add"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add a new service"
-            android:layout_margin="10dp"
-            android:paddingVertical="4dp"
-            android:paddingLeft="10dp"
-            android:background="@drawable/border"
-            android:textColor="@color/white"
-            android:textSize="20dp" />
-    </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
