@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.automain.R
 import com.example.automain.admin.AdminActivity
 import com.example.automain.auth.LoginActivity
+import com.example.automain.componentActivity.EditProfileActivity
 import com.example.automain.databinding.ActivityUserMenuBinding
 import com.example.automain.user.UserActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -40,11 +41,11 @@ class UserMenuActivity : AppCompatActivity() {
                 .get()
                 .addOnSuccessListener { documents ->
                     for (document in documents) {
-                        binding.userName.text = "Hi . . ${document.get("name").toString()}"
+                        binding.userName.text = "Hello . . ${document.get("name").toString()}"
                     }
                 }
                 .addOnFailureListener {
-                    binding.userName.text = "Hi .. Admin"
+                    binding.userName.text = "Hello .. Admin"
                 }
         }
 
@@ -57,6 +58,11 @@ class UserMenuActivity : AppCompatActivity() {
             var intent = Intent(this , LoginActivity::class.java)
             startActivity(intent)
             finish()
+        }
+
+        binding.editProfile.setOnClickListener{
+            var intent = Intent(this , EditProfileActivity::class.java)
+            startActivity(intent)
         }
     }
 }

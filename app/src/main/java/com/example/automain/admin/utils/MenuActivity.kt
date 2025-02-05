@@ -10,8 +10,11 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.automain.R
 import com.example.automain.admin.AdminActivity
 import com.example.automain.auth.LoginActivity
+import com.example.automain.componentActivity.EditProfileActivity
 import com.example.automain.databinding.ActivityMenuBinding
 import com.example.automain.user.UserActivity
+import com.example.components.fetchCurrentUserEmail
+import com.example.components.getDocumentByEmailAndDB
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -32,19 +35,16 @@ class MenuActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
+
         if(auth.currentUser != null){
-            val email = auth.currentUser?.email.toString()
-            db.collection("users")
-                .whereEqualTo("email", email)
-                .get()
-                .addOnSuccessListener { documents ->
-                    for (document in documents) {
-                        binding.userName.text = "Hi . . ${document.get("name").toString()}"
-                    }
+            val email = fetchCurrentUserEmail()
+            getDocumentByEmailAndDB("users", email){ document ->
+                if (document != null) {
+                    binding.userName.text = "Hello . . ${document.get("name").toString()}"
                 }
-                .addOnFailureListener {
-                    binding.userName.text = "Hi .. Admin"
-                }
+            }
+            binding.userName.text = "Hi .. Admin"
+
         }
 
         binding.back.setOnClickListener {
@@ -60,6 +60,10 @@ class MenuActivity : AppCompatActivity() {
         }
         binding.add.setOnClickListener {
             var intent = Intent(this , AddServiceActivity::class.java)
+            startActivity(intent)
+        }
+        binding.editProfile.setOnClickListener {
+            var intent = Intent(this , EditProfileActivity::class.java)
             startActivity(intent)
         }
     }

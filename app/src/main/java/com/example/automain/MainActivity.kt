@@ -13,6 +13,8 @@ import com.example.automain.auth.RegisterActivity
 import com.example.automain.databinding.ActivityLoginBinding
 import com.example.automain.databinding.ActivityMainBinding
 import com.example.automain.user.UserActivity
+import com.example.components.checkIsAdmin
+import com.example.components.getDocumentByEmailAndDB
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -30,39 +32,23 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        auth = FirebaseAuth.getInstance()
+
         db = FirebaseFirestore.getInstance()
-        val currentUser = auth.currentUser
-        if(currentUser != null){
-            currentUser.let {
-                val email = currentUser.email
-                db.collection("users")
-                    .whereEqualTo("email", email)
-                    .get()
-                    .addOnSuccessListener { documents ->
-                        for (document in documents) {
-                            if (document.get("isAdmin") == true) {
-                                val intent = Intent(this, AdminActivity::class.java)
-                                startActivity(intent)
-                            }else {
-                                val intent = Intent(this, UserActivity::class.java)
-                                startActivity(intent)
-                            }
-                            Toast.makeText(
-                                this,
-                                "welcome ${document.get("name")}",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            finish()
-                        }
-                    }
+        checkIsAdmin { result ->
+            if (result == 1) {
+                val intent = Intent(this, AdminActivity::class.java)
+                startActivity(intent)
+            } else {
+                val intent = Intent(this, UserActivity::class.java)
+                startActivity(intent)
             }
-
-        }else{
-            /*val intent = Intent(this, LoginActivity::class.java)
-             startActivity(intent)*/
+            Toast.makeText(
+                this,
+                "Welcome ",
+                Toast.LENGTH_SHORT
+            ).show()
+            finish()
         }
-
         binding.signin.setOnClickListener {
             Toast.makeText(this, "signin here", Toast.LENGTH_SHORT)
             val intent = Intent(this , LoginActivity::class.java)

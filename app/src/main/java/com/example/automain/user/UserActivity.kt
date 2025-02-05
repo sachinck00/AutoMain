@@ -13,7 +13,9 @@ import com.example.automain.MainActivity
 import com.example.automain.R
 import com.example.automain.admin.utils.MenuActivity
 import com.example.automain.auth.LoginActivity
+import com.example.automain.componentActivity.ProfileActivity
 import com.example.automain.databinding.ActivityUserBinding
+import com.example.automain.user.fragments.Enquiry
 import com.example.automain.user.fragments.Services
 import com.example.automain.user.utils.UserMenuActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -44,9 +46,16 @@ class UserActivity : AppCompatActivity() {
         binding.services.setOnClickListener {
             replaceFragment(Services())
         }
+        binding.customServices.setOnClickListener {
+            replaceFragment(Enquiry())
+        }
 
         binding.menu.setOnClickListener {
             var intent = Intent(this, UserMenuActivity::class.java)
+            startActivity(intent)
+        }
+        binding.profile.setOnClickListener {
+            var intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
     }

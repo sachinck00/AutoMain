@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkBlue"
+    tools:context=".admin.serviceList.EditServiceActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="7dp">
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/back_icon"/>
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit Service"
+            android:layout_marginStart="50dp"
+            android:layout_marginVertical="4dp"
+            android:textColor="@color/white"
+            android:textSize="23dp" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/almond"
+        android:layout_marginHorizontal="3dp"
+        android:layout_marginVertical="2dp"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/border">
+
+            <!-- Service Name -->
+            <TextView
+                android:id="@+id/serviceName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Service Name"
+                android:textColor="#FFFFFF"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <!-- Time Required -->
+            <TextView
+                android:id="@+id/timeRequired"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time Required"
+                android:textColor="#E0E0E0"
+                android:textSize="15dp"
+                android:layout_marginTop="3dp" />
+
+            <!-- Warranty -->
+            <TextView
+                android:id="@+id/warranty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Warranty"
+                android:textColor="#E0E0E0"
+                android:textSize="15dp"
+                android:layout_marginTop="3dp" />
+
+            <!-- Recommendation Time -->
+            <TextView
+                android:id="@+id/recommendationTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recommendation Time"
+                android:textColor="#E0E0E0"
+                android:textSize="15dp"
+                android:layout_marginTop="3dp" />
+
+            <!-- Number of Services -->
+            <TextView
+                android:id="@+id/numberOfServices"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number of Services"
+                android:textColor="#E0E0E0"
+                android:textSize="15dp"
+                android:layout_marginTop="3dp"
+                />
+
+            <!-- Service Amount -->
+            <TextView
+                android:id="@+id/serviceAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Service Amount"
+                android:textColor="#E0E0E0"
+                android:textSize="15dp"
+                android:layout_marginTop="3dp" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp">
+
+                <EditText
+                    android:id="@+id/newService"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/input_bg"
+                    android:hint="Edit Service Name "
+                    android:textSize="16dp"
+                    android:inputType="text"
+                    android:padding="8dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+
+                <EditText
+                    android:id="@+id/newTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/input_bg"
+                    android:hint="Time required"
+                    android:textSize="16dp"
+                    android:inputType="text"
+                    android:padding="8dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+
+                <EditText
+                    android:id="@+id/newWarranty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/input_bg"
+                    android:hint="Warrranty"
+                    android:inputType="text"
+                    android:padding="8dp"
+                    android:textSize="16dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+
+                <EditText
+                    android:id="@+id/newRecommendation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/input_bg"
+                    android:hint="Recommendation time"
+                    android:inputType="text"
+                    android:padding="8dp"
+                    android:textSize="16dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+
+                <EditText
+                    android:id="@+id/newServicecount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/input_bg"
+                    android:hint="Number of Services"
+                    android:inputType="text"
+                    android:padding="8dp"
+                    android:textSize="16dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+
+                <EditText
+                    android:id="@+id/newRate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Amount"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:background="@drawable/input_bg"
+                    android:padding="8dp"
+                    android:textSize="16dp"
+                    android:layout_marginTop="10dp"
+                    android:inputType="text"/>
+                <Button
+                    android:id="@+id/update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Update Service"
+                    android:textColor="@color/darkBlue"
+                    android:backgroundTint="@color/white"
+                    android:textSize="16dp"
+                    android:padding="10dp"
+                    android:layout_marginTop="10dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>

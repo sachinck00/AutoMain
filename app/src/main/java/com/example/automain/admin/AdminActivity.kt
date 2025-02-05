@@ -13,6 +13,7 @@ import com.example.automain.R
 import com.example.automain.admin.serviceList.ServiceAdapter
 import com.example.automain.admin.serviceList.Services
 import com.example.automain.admin.utils.MenuActivity
+import com.example.automain.componentActivity.ProfileActivity
 import com.example.automain.databinding.ActivityAdminBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -48,6 +49,11 @@ class AdminActivity : AppCompatActivity() {
 
         binding.menu.setOnClickListener {
             var intent = Intent(this, MenuActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.profile.setOnClickListener {
+            var intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
     }

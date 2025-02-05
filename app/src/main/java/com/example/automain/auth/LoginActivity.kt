@@ -12,6 +12,8 @@ import com.example.automain.R
 import com.example.automain.admin.AdminActivity
 import com.example.automain.databinding.ActivityLoginBinding
 import com.example.automain.user.UserActivity
+
+import com.example.components.getDocumentByEmailAndDB
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -44,7 +46,30 @@ class LoginActivity : AppCompatActivity() {
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            db.collection("users")
+                            getDocumentByEmailAndDB("users", email){ document ->
+                                if (document != null) {
+                                    if (document.get("isAdmin") == true) {
+                                        val intent = Intent(this, AdminActivity::class.java)
+                                        startActivity(intent)
+                                    }else {
+                                        val intent = Intent(this, UserActivity::class.java)
+                                        startActivity(intent)
+                                    }
+                                    Toast.makeText(
+                                        this,
+                                        "welcome ${document.get("name")}",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    finish()
+                                }  else {
+                                    Toast.makeText(
+                                        baseContext,
+                                        "Authentication failed.",
+                                        Toast.LENGTH_SHORT,
+                                    ).show()
+                                }
+                            }
+                           /* db.collection("users")
                                 .whereEqualTo("email", email)
                                 .get()
                                 .addOnSuccessListener { documents ->
@@ -63,13 +88,7 @@ class LoginActivity : AppCompatActivity() {
                                         ).show()
                                         finish()
                                     }
-                                }
-                        } else {
-                            Toast.makeText(
-                                baseContext,
-                                "Authentication failed.",
-                                Toast.LENGTH_SHORT,
-                            ).show()
+                                }*/
                         }
                     }
 

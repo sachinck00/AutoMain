@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="@color/darkBlue"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".componentActivity.ProfileActivity">
+
+    <!-- Header Section with Back Button and Title -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginVertical="8dp">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/back_icon" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="My Profile"
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="6dp"/>
+    </RelativeLayout>
+
+    <!-- Divider Line -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/almond"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginVertical="5dp"/>
+
+    <!-- Profile Info Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="16dp"
+        android:padding="16dp"
+        android:background="@drawable/list_border">
+
+        <!-- Profile Image Section with Circular Border -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/account"
+                android:layout_centerInParent="true"
+                android:background="@drawable/circular_border"
+                android:padding="5dp"
+                android:layout_marginBottom="16dp"/>
+        </RelativeLayout>
+
+        <!-- User Name -->
+        <TextView
+            android:id="@+id/fullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="full Name"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp" />
+
+        <!-- User Email -->
+        <TextView
+            android:id="@+id/userEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="user@example.com"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- User Phone -->
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Phone"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"
+            android:layout_centerHorizontal="true"/>
+
+        <!-- User Address -->
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Address"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"
+            android:layout_centerHorizontal="true"/>
+
+        <!-- User DOB -->
+        <TextView
+            android:id="@+id/dob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User DOB"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/alterPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Alternate Phone"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"
+            android:layout_centerHorizontal="true"/>
+    </LinearLayout>
+
+</LinearLayout>

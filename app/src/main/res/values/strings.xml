@@ -4,4 +4,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="app_content">jlbivafibvludfhvludfsvhdfsviuhdfsnvbudfhvldfkjn cvjh v;jvndfsvu;uhiuvdf</string>
+
+
+    <string name="get_location_button">Get Location</string>
+    <string name="location_permission_denied">Location permission denied</string>
+    <string name="location_not_available">Location not available</string>
 </resources>

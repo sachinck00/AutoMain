@@ -1,0 +1,6 @@
+<!-- circular_border.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/lightBlue"/>
+    <corners android:radius="60dp"/>
+    <stroke android:color="#ffffff" android:width="2dp"/>
+</shape>

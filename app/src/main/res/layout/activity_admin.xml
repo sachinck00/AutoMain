@@ -14,17 +14,25 @@
         android:layout_gravity="center"
         android:layout_margin="7dp">
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:id="@+id/profile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentLeft="true"
             android:src="@drawable/account"/>
         <ImageView
             android:id="@+id/menu"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:src="@drawable/menu"/>
     </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/almond"
+        android:layout_marginHorizontal="3dp"
+        android:layout_marginVertical="2dp"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#8686AC"
-            android:text="Available Services ."
+            android:text="Updated Services ."
             android:textStyle="bold"
             android:layout_marginBottom="8dp"
             android:textSize="25sp" />

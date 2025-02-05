@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:id="@+id/main"
     android:background="@color/darkBlue"
+    android:paddingHorizontal="5dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".user.utils.UserMenuActivity">
@@ -12,38 +13,47 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="7dp">
+        android:layout_marginVertical="4dp">
         <ImageView
             android:id="@+id/back"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentLeft="true"
             android:src="@drawable/back_icon"/>
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hello . .  User"
+            android:layout_marginStart="50dp"
+            android:layout_marginVertical="4dp"
+            android:textColor="@color/white"
+            android:textSize="23dp" />
     </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/almond"
+        android:layout_marginHorizontal="3dp"
+        android:layout_marginVertical="2dp"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="7dp">
-        <TextView
-            android:id="@+id/userName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hi . .  User"
-            android:textColor="@color/white"
-            android:textSize="30dp" />
+
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
         <TextView
-            android:id="@+id/profile"
+            android:id="@+id/editProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Edit Profile"
+            android:text="Complete Profile"
             android:layout_margin="10dp"
-            android:paddingVertical="4dp"
+            android:paddingVertical="9dp"
             android:paddingLeft="10dp"
             android:background="@drawable/border"
             android:textColor="@color/white"
@@ -59,7 +69,7 @@
             android:layout_height="wrap_content"
             android:text="My Requests"
             android:layout_margin="10dp"
-            android:paddingVertical="4dp"
+            android:paddingVertical="9dp"
             android:paddingLeft="10dp"
             android:background="@drawable/border"
             android:textColor="@color/white"
@@ -76,7 +86,7 @@
             android:layout_height="wrap_content"
             android:text="History"
             android:layout_margin="10dp"
-            android:paddingVertical="4dp"
+            android:paddingVertical="9dp"
             android:paddingLeft="10dp"
             android:background="@drawable/border"
             android:textColor="@color/white"
@@ -92,7 +102,7 @@
             android:layout_height="wrap_content"
             android:text="Log out"
             android:layout_margin="10dp"
-            android:paddingVertical="4dp"
+            android:paddingVertical="9dp"
             android:paddingLeft="10dp"
             android:background="@drawable/border"
             android:textColor="@color/white"

@@ -2,6 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission
+        android:name="android.permission.ACCESS_COARSE_LOCATION"
+        tools:ignore="WrongManifestParent" /> <!-- Location Permissions -->
+    <uses-permission
+        android:name="android.permission.ACCESS_FINE_LOCATION"
+        tools:ignore="ManifestOrder,WrongManifestParent" /> <!-- For background location access on Android 10 and above -->
+    <uses-permission
+        android:name="android.permission.ACCESS_BACKGROUND_LOCATION"
+        android:maxSdkVersion="29"
+        tools:ignore="WrongManifestParent" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,6 +24,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AutoMain"
         tools:targetApi="31">
+        <activity
+            android:name=".componentActivity.EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.serviceList.EditServiceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".componentActivity.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.serviceList.ServiceDetailsActivity"
+            android:exported="false" />
         <activity
             android:name=".user.utils.UserMenuActivity"
             android:exported="false" />
