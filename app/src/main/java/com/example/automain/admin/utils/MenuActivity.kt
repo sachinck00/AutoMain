@@ -40,7 +40,7 @@ class MenuActivity : AppCompatActivity() {
             val email = fetchCurrentUserEmail()
             getDocumentByEmailAndDB("users", email){ document ->
                 if (document != null) {
-                    binding.userName.text = "Hello . . ${document.get("name").toString()}"
+                    binding.userName.text = "Hello , ${document.get("name").toString()}"
                 }
             }
             binding.userName.text = "Hi .. Admin"

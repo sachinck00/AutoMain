@@ -13,7 +13,7 @@
         android:orientation="vertical"
         android:background="@drawable/list_border"
         android:layout_margin="15dp"
-        android:padding="16dp">
+        android:padding="10dp">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
                         android:id="@+id/getLocationButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/main_text"
+                        android:textColor="@color/button_text"
                         android:backgroundTint="@color/button_bg"
                         android:paddingHorizontal="20dp"
                         android:text="Get Your Location" />
@@ -108,7 +108,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Submit"
-                        android:textColor="@color/main_text"
+                        android:textColor="@color/button_text"
                         android:backgroundTint="@color/button_bg"
                         android:textSize="20dp"
                         android:padding="10dp"

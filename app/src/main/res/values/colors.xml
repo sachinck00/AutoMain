@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="button_bg">#fc8403</color>
-    <color name="main_text">#212121</color>
-    <color name="sub_text">#424242</color>
-    <color name="app_bg">#EEEEEE</color>
-    <color name="darkBlue">#EEEEEE</color>
-    <color name="box_bg">#FDFAF4</color>
+    <color name="button_bg">#FFFFFF</color>
+    <color name="button_text">#000000</color>
+    <color name="main_text">#FFFFFF</color>
+    <color name="sub_text">#E8DFDF</color>
+    <color name="app_bg">#121212</color>
+    <color name="box_bg">#171F24</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="red">#F44336</color>
+    <color name="green">#05A30C</color>
 </resources>
 

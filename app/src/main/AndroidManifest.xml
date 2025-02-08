@@ -32,12 +32,6 @@
             android:name=".admin.utils.RequestsActivity"
             android:exported="false" />
         <activity
-            android:name=".admin.utils.RequestHandleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".admin.utils.RequestServiceActivity"
-            android:exported="false" />
-        <activity
             android:name=".user.utils.RequestServiceActivity"
             android:exported="false" />
         <activity
@@ -63,7 +57,8 @@
             android:exported="false" />
         <activity
             android:name=".admin.AdminActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AutoMain"/>
         <activity
             android:name=".user.UserActivity"
             android:exported="false" />

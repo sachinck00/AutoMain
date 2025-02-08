@@ -4,44 +4,43 @@
     android:id="@+id/main"
     android:orientation="vertical"
     android:background="@color/app_bg"
-    android:paddingHorizontal="5dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".admin.utils.MenuActivity">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="7dp">
+        android:padding="10dp">
         <ImageView
             android:id="@+id/back"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
             android:layout_alignParentLeft="true"
             android:src="@drawable/back"/>
         <TextView
             android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello . Admin"
-            android:layout_marginStart="50dp"
-            android:layout_marginVertical="4dp"
+            android:text="Hello , Admin"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="60dp"
             android:textColor="@color/main_text"
-            android:textSize="23dp" />
+            android:textSize="18dp" />
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/sub_text"
         android:layout_marginHorizontal="3dp"
-        android:layout_marginVertical="2dp"/>
+        android:layout_marginTop="3dp"/>
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/border"
-        android:layout_margin="10dp"
+        android:layout_margin="15dp"
         android:paddingVertical="10dp">
         <ImageView
             android:layout_width="20dp"
@@ -55,16 +54,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
+            android:layout_centerInParent="true"
             android:text="Complete Profile"
             android:textColor="@color/main_text"
-            android:textSize="20dp" />
+            android:textSize="18dp" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/border"
-        android:layout_margin="10dp"
+        android:layout_margin="15dp"
         android:paddingVertical="10dp">
         <ImageView
             android:layout_width="20dp"
@@ -77,17 +77,18 @@
             android:id="@+id/requests"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_marginHorizontal="40dp"
             android:text="My Requests"
             android:textColor="@color/main_text"
-            android:textSize="20dp" />
+            android:textSize="18dp" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/border"
-        android:layout_margin="10dp"
+        android:layout_margin="15dp"
         android:paddingVertical="10dp">
         <ImageView
             android:layout_width="20dp"
@@ -95,22 +96,23 @@
             android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
             android:layout_marginHorizontal="5dp"
-            android:src="@drawable/add2"/>
+            android:src="@drawable/add"/>
         <TextView
             android:id="@+id/add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
+            android:layout_centerInParent="true"
             android:text="Add a new service"
             android:textColor="@color/main_text"
-            android:textSize="20dp" />
+            android:textSize="18dp" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/border"
-        android:layout_margin="10dp"
+        android:layout_margin="15dp"
         android:paddingVertical="10dp">
         <ImageView
             android:layout_width="20dp"
@@ -124,16 +126,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
+            android:layout_centerInParent="true"
             android:text="History"
             android:textColor="@color/main_text"
-            android:textSize="20dp" />
+            android:textSize="18dp" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/border"
-        android:layout_margin="10dp"
+        android:layout_margin="15dp"
         android:paddingVertical="10dp">
         <ImageView
             android:layout_width="20dp"
@@ -147,9 +150,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Log out"
+            android:layout_centerInParent="true"
             android:layout_marginHorizontal="40dp"
             android:textColor="@color/main_text"
-            android:textSize="20dp" />
+            android:textSize="18dp" />
     </RelativeLayout>
 
 </LinearLayout>
