@@ -1,21 +1,29 @@
-package com.example.automain.user.fragments
+package com.example.automain.user.utils
 
 import android.Manifest
+import android.annotation.SuppressLint
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
+import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.example.automain.R
-import com.example.automain.databinding.FragmentEnquiryBinding
+import com.example.automain.databinding.ActivityEditServiceBinding
+import com.example.automain.databinding.ActivityRequestServiceBinding
 import com.example.automain.user.UserActivity
 import com.example.components.fetchCurrentUserEmail
 import com.example.components.getCurrentDateTime
@@ -23,46 +31,60 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.*
+import java.util.Locale
 
-class Enquiry : Fragment() {
-
-    private lateinit var binding: FragmentEnquiryBinding
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
+class RequestServiceActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityRequestServiceBinding
     private lateinit var db : FirebaseFirestore
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
-    // Override onCreateView to handle the logic of the fragment
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentEnquiryBinding.inflate(layoutInflater)
-        db = FirebaseFirestore.getInstance()
+    val CHANNEL_ID = "channel_id"
+    val CHANNEL_NAME = "channel_name"
 
-
-        // Initialize FusedLocationProviderClient to access device location
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
-
-        // Check if location permission is granted
-        if (ContextCompat.checkSelfPermission(
-                requireContext(), Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED) {
-            // Request permission if not granted
-            ActivityCompat.requestPermissions(
-                requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1
-            )
-        } else {
-            // If permission is granted, get the current location
-            getCurrentLocation()
+    @SuppressLint("MissingPermission")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        binding = ActivityRequestServiceBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
         }
 
-        //handle submit
-        binding.submitBtn.setOnClickListener {
-            Toast.makeText(requireContext(), "please wait", Toast.LENGTH_SHORT).show()
-            var serviceName = binding.serviceName.text.toString()
+        //notification channel and builder
+       createNotificationChannel()
+
+        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+            .setSmallIcon(R.drawable.applogo)
+            .setContentTitle("Service Requested Successfully")
+            .setContentText("Waiting for Response from Admin")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            // Set the intent that fires when the user taps the notification.
+            .setAutoCancel(true)
+            .build()
+
+        val notificationManager = NotificationManagerCompat.from(this)
+
+        // db
+        db = FirebaseFirestore.getInstance()
+        val serviceName = intent.getStringExtra("SERVICE_NAME")
+        serviceName?.let {
+            binding.serviceName.text = it
+        }
+
+        binding.back.setOnClickListener {
+            val intent = Intent(this, UserActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.request.setOnClickListener {
+            Toast.makeText(this, "please wait", Toast.LENGTH_SHORT).show()
+            var serviceName = serviceName
             var vehicleName = binding.vehicleName.text.toString()
             var vehicleNumber = binding.vehicleNumber.text.toString()
-            var vehicleModel = binding.vehicleModel.text.toString()
+            var vehicleModel = binding.VehicleModel.text.toString()
             var location = binding.locationTextView.text
             var time = getCurrentDateTime()
             var userEmail = fetchCurrentUserEmail()
@@ -81,37 +103,55 @@ class Enquiry : Fragment() {
                 db.collection("serviceRequests").add(request)
                     .addOnSuccessListener {
                         clear()
+                        var intent = Intent(this , UserActivity::class.java)
+                        startActivity(intent)
                         Toast.makeText(
-                            requireContext(),
+                            this,
                             "Service Requested successfully . wait for response",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
                     .addOnFailureListener {
-                        Toast.makeText(requireContext(), "Service not sent", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Service not sent", Toast.LENGTH_SHORT).show()
                     }
+               notificationManager.notify(0, builder)
+
             }else{
-                Toast.makeText(requireContext(), "Fill all fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Fill all fields", Toast.LENGTH_SHORT).show()
             }
+
         }
 
-        return binding.root
+
+        //fetch location
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        // Check if location permission is granted
+        if (ContextCompat.checkSelfPermission(
+                this, Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED) {
+            // Request permission if not granted
+            ActivityCompat.requestPermissions(
+                this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1
+            )
+        } else {
+            // If permission is granted, get the current location
+            getCurrentLocation()
+        }
     }
 
     private fun clear(){
         binding.vehicleName.text = null
         binding.vehicleNumber.text = null
-        binding.vehicleModel.text = null
-        binding.serviceName.text = null
+        binding.VehicleModel.text = null
     }
 
-    // Function to get the current location
+
     private fun getCurrentLocation() {
         if (ActivityCompat.checkSelfPermission(
-                requireContext(),
+                this,
                 Manifest.permission.ACCESS_FINE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                requireContext(),
+                this,
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
@@ -125,25 +165,24 @@ class Enquiry : Fragment() {
             return
         }
         fusedLocationClient.lastLocation
-            .addOnSuccessListener(requireActivity(), OnSuccessListener<Location> { location ->
+            .addOnSuccessListener(this, OnSuccessListener<Location> { location ->
                 if (location != null) {
                     val latitude = location.latitude
                     val longitude = location.longitude
 
                     // Show the latitude and longitude in a Toast
-                    Toast.makeText(requireContext(), "$latitude", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "$latitude", Toast.LENGTH_LONG).show()
 
                     // Get the full address from latitude and longitude
                     getAddressFromLocation(latitude, longitude)
                 } else {
-                    Toast.makeText(requireContext(), "Location not available", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Location not available", Toast.LENGTH_SHORT).show()
                 }
             })
     }
 
-    // Function to get the address from latitude and longitude
     private fun getAddressFromLocation(latitude: Double, longitude: Double) {
-        val geocoder = Geocoder(requireContext(), Locale.getDefault())
+        val geocoder = Geocoder(this, Locale.getDefault())
         try {
             // Get the list of addresses from the given latitude and longitude
             val addresses: List<Address>? = geocoder.getFromLocation(latitude, longitude, 1)
@@ -175,28 +214,23 @@ class Enquiry : Fragment() {
                     if (fullAddress.isNotEmpty()) fullAddress.append(", ")
                     fullAddress.append(it)
                 }
-
-                // Check if we have built a valid address and set it in the TextView
                 binding.getLocationButton.setOnClickListener {
                     if (fullAddress.isNotEmpty()) {
                         binding.locationTextView.text = "Address: $fullAddress"
                     } else {
-                        Toast.makeText(requireContext(), "No address found for the location", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "No address found for the location", Toast.LENGTH_SHORT).show()
                     }
 
                 }
-
             } else {
-                Toast.makeText(requireContext(), "No address found for the location", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "No address found for the location", Toast.LENGTH_SHORT).show()
             }
         } catch (e: Exception) {
             e.printStackTrace()
-            Toast.makeText(requireContext(), "Error getting address", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Error getting address", Toast.LENGTH_SHORT).show()
         }
     }
 
-
-    // Handle permission request result
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>, grantResults: IntArray
     ) {
@@ -205,9 +239,23 @@ class Enquiry : Fragment() {
             // Permission granted, get the location
             getCurrentLocation()
         } else {
-            Toast.makeText(requireContext(), "Location permission denied", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Location permission denied", Toast.LENGTH_SHORT).show()
         }
     }
 
-
+    private fun createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is not in the Support Library.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val descriptionText = " this is notification channel"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, importance).apply {
+                description = descriptionText
+            }
+            // Register the channel with the system.
+            val notificationManager: NotificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
 }

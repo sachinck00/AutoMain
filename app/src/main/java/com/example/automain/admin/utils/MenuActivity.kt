@@ -66,5 +66,10 @@ class MenuActivity : AppCompatActivity() {
             var intent = Intent(this , EditProfileActivity::class.java)
             startActivity(intent)
         }
+
+        binding.requests.setOnClickListener {
+            var intent = Intent(this , RequestsActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darkBlue"
+    android:background="@color/app_bg"
     tools:context=".componentActivity.EditProfileActivity">
 
     <!-- Header Section -->
@@ -21,14 +21,14 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentStart="true"
-            android:src="@drawable/back_icon" />
+            android:src="@drawable/back" />
 
         <TextView
             android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Edit Profile"
-            android:textColor="@color/white"
+            android:textColor="@color/main_text"
             android:textSize="23sp"
             android:layout_marginStart="50dp"
             android:layout_marginVertical="4dp" />
@@ -38,7 +38,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/almond"
+        android:background="@color/sub_text"
         android:layout_marginHorizontal="3dp"
         android:layout_marginVertical="2dp" />
 
@@ -46,7 +46,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/list_border"
+        android:background="@drawable/border"
         android:padding="10dp"
         android:layout_margin="13dp">
 
@@ -59,13 +59,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Personal Details"
-                android:textColor="@color/white"
+                android:textColor="@color/main_text"
                 android:textSize="23sp"
                 android:layout_marginVertical="12dp" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/almond"
                 android:layout_marginHorizontal="3dp"
                 android:layout_marginVertical="3dp" />
             <!-- Service Name Input -->
@@ -79,8 +78,8 @@
                 android:textSize="16sp"
                 android:inputType="text"
                 android:padding="15dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white" />
+                android:textColor="@color/sub_text"
+                android:textColorHint="@color/sub_text" />
 
             <!-- Time Required Input -->
             <EditText
@@ -93,8 +92,8 @@
                 android:textSize="16sp"
                 android:inputType="text"
                 android:padding="15dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white" />
+                android:textColor="@color/sub_text"
+                android:textColorHint="@color/sub_text"  />
 
             <!-- Warranty Input -->
             <EditText
@@ -107,8 +106,8 @@
                 android:textSize="16sp"
                 android:inputType="text"
                 android:padding="15dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white" />
+                android:textColor="@color/sub_text"
+                android:textColorHint="@color/sub_text"  />
 
             <!-- Recommendation Time Input -->
             <EditText
@@ -121,8 +120,8 @@
                 android:textSize="16sp"
                 android:inputType="date"
                 android:padding="15dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white" />
+                android:textColor="@color/sub_text"
+                android:textColorHint="@color/sub_text"  />
 
             <!-- Number of Services Input -->
 
@@ -133,8 +132,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Update Profile"
-                android:textColor="@color/darkBlue"
-                android:backgroundTint="@color/white"
+                android:textColor="@color/sub_text"
+                android:textColorHint="@color/sub_text"
+                android:backgroundTint="@color/button_bg"
                 android:textSize="16sp"
                 android:padding="10dp"
                 android:layout_marginTop="20dp" />

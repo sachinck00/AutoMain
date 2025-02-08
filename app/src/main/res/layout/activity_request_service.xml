@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:background="@color/app_bg"
+    android:paddingHorizontal="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.utils.RequestServiceActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="7dp">
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/back"/>
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Service"
+            android:layout_marginStart="50dp"
+            android:layout_marginVertical="4dp"
+            android:textColor="@color/main_text"
+            android:textSize="23dp" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/sub_text"
+        android:layout_marginHorizontal="3dp"
+        android:layout_marginVertical="2dp"/>
+     <ScrollView
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_margin="10dp"
+         android:background="@drawable/list_border">
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:orientation="vertical"
+             android:padding="16dp">
+             <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center"
+                 android:layout_margin="7dp">
+                 <TextView
+                     android:id="@+id/serviceName"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:textStyle="bold"
+                     android:text="Provide Custom Service"
+                     android:textColor="@color/main_text"
+                     android:textSize="20dp" />
+             </RelativeLayout>
+             <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content">
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="vertical">
+                     <EditText
+                         android:id="@+id/vehicleName"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:hint="Vehicle name"
+                         android:textColor="@color/sub_text"
+                         android:textColorHint="@color/sub_text"
+                         android:background="@drawable/input_bg"
+                         android:padding="15dp"
+                         android:layout_marginTop="20dp"
+                         android:inputType="text"/>
+                     <EditText
+                         android:id="@+id/VehicleModel"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:hint="vehicle model"
+                         android:textColor="@color/sub_text"
+                         android:textColorHint="@color/sub_text"
+                         android:background="@drawable/input_bg"
+                         android:padding="15dp"
+                         android:layout_marginTop="15dp"
+                         android:inputType="text"/>
+
+                     <EditText
+                         android:id="@+id/vehicleNumber"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginTop="15dp"
+                         android:background="@drawable/input_bg"
+                         android:hint="vehicle Number"
+                         android:inputType="text"
+                         android:padding="15dp"
+                         android:textColor="@color/sub_text"
+                         android:textColorHint="@color/sub_text"/>
+
+
+
+                     <TextView
+                         android:id="@+id/locationTextView"
+                         android:layout_marginTop="15dp"
+                         android:padding="5dp"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:textColor="@color/sub_text"
+                         android:text="Location will appear here , please wait ."
+                         android:textSize="14sp" />
+
+                     <!-- Button to trigger location fetch -->
+                     <Button
+                         android:id="@+id/getLocationButton"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:textColor="@color/main_text"
+                         android:backgroundTint="@color/button_bg"
+                         android:paddingHorizontal="20dp"
+                         android:text="Get Your Location" />
+
+                     <Button
+                         android:id="@+id/request"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:text="Request"
+                         android:textColor="@color/main_text"
+                         android:backgroundTint="@color/button_bg"
+                         android:textSize="20dp"
+                         android:padding="10dp"
+                         android:layout_marginTop="15dp" />
+
+                 </LinearLayout>
+
+             </RelativeLayout>
+
+         </LinearLayout>
+     </ScrollView>
+
+</LinearLayout>

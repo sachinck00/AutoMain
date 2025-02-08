@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:orientation="vertical"
-    android:background="@color/darkBlue"
+    android:background="@color/app_bg"
     android:paddingHorizontal="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,29 +15,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="60dp">
+        android:layout_marginTop="55dp">
         <ImageView
             android:id="@+id/backButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentLeft="true"
-            android:src="@drawable/back_icon"/>
+            android:src="@drawable/back"/>
         <TextView
             android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Edit Service"
+            android:text="Request Service"
             android:layout_marginStart="60dp"
             android:layout_marginVertical="4dp"
-            android:textColor="@color/white"
+            android:textColor="@color/main_text"
             android:textSize="23dp" />
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/almond"
+        android:background="@color/sub_text"
         android:layout_marginHorizontal="3dp"
-        android:layout_marginVertical="2dp"/>
+        android:layout_marginTop="10dp"/>
 
     <!-- Scrollable content area -->
     <ScrollView
@@ -52,7 +52,7 @@
             android:orientation="vertical"
             android:paddingHorizontal="15dp"
             android:paddingVertical="10dp"
-            android:background="@drawable/border">
+            android:background="@drawable/list_border">
 
             <!-- Service Name -->
             <TextView
@@ -60,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Service Name"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/main_text"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:layout_marginVertical="10dp" />
@@ -71,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Time Required"
-                android:textColor="#E0E0E0"
+                android:textColor="@color/sub_text"
                 android:textSize="18sp"
                 android:layout_marginTop="8dp" />
 
@@ -81,7 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Warranty"
-                android:textColor="#E0E0E0"
+                android:textColor="@color/sub_text"
                 android:textSize="18sp"
                 android:layout_marginTop="8dp" />
 
@@ -91,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Recommendation Time"
-                android:textColor="#E0E0E0"
+                android:textColor="@color/sub_text"
                 android:textSize="18sp"
                 android:layout_marginTop="8dp" />
 
@@ -101,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Number of Services"
-                android:textColor="#E0E0E0"
+                android:textColor="@color/sub_text"
                 android:textSize="18sp"
                 android:layout_marginTop="8dp"
                 />
@@ -112,17 +112,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Service Amount"
-                android:textColor="#E0E0E0"
+                android:textColor="@color/sub_text"
                 android:textSize="18sp"
                 android:layout_marginTop="8dp" />
 
             <!-- Request Button -->
             <Button
+                android:id="@+id/requestService"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Request"
-                android:textColor="@color/darkBlue"
-                android:backgroundTint="@color/white"
+                android:textColor="@color/main_text"
+                android:backgroundTint="@color/button_bg"
                 android:layout_marginTop="20dp"
                 android:paddingHorizontal="34dp"
                 android:paddingVertical="12dp" />

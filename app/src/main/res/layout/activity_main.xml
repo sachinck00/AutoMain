@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1117bf"
+    android:background="@color/app_bg"
     tools:context=".MainActivity">
 
     <RelativeLayout
@@ -16,6 +16,7 @@
         <ImageView
             android:layout_width="160dp"
             android:layout_height="160dp"
+            android:background="@color/app_bg"
             android:layout_centerHorizontal="true"
             android:src="@drawable/applogo"/>
     </RelativeLayout>
@@ -27,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Automative Vehicular Maintenanace And Management System"
-            android:textColor="@color/white"
+            android:textColor="@color/main_text"
             android:textStyle="bold"
             android:textSize="20dp"/>
 
@@ -40,10 +41,10 @@
             android:id="@+id/signin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/button_bg"
             android:text="Sign in"
             android:layout_alignParentRight="true"
-            android:textColor="@color/darkBlue"
+            android:textColor="@color/main_text"
             android:textSize="17dp"
             />
 
@@ -51,10 +52,10 @@
             android:id="@+id/register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/button_bg"
             android:text="Register"
             android:layout_alignParentLeft="true"
-            android:textColor="@color/darkBlue"
+            android:textColor="@color/main_text"
             android:textSize="17dp"
             />
     </RelativeLayout>

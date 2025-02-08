@@ -6,14 +6,20 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.example.automain.R
 import com.example.automain.admin.AdminActivity
 import com.example.automain.admin.utils.MenuActivity
 import com.example.automain.databinding.ActivityServiceDetailsBinding
 import com.example.automain.user.UserActivity
+import com.example.automain.user.fragments.Enquiry
+import com.example.automain.user.fragments.Services
+import com.example.automain.user.utils.RequestServiceActivity
 
 class ServiceDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityServiceDetailsBinding
+    private lateinit var fragmentManager: FragmentManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,6 +70,12 @@ class ServiceDetailsActivity : AppCompatActivity() {
         binding.backButton.setOnClickListener {
             var intent = Intent(this, UserActivity::class.java)
             startActivity(intent)
+        }
+        binding.requestService.setOnClickListener {
+            val intent = Intent(this, RequestServiceActivity::class.java).apply {
+                putExtra("SERVICE_NAME", serviceName)
+            }
+           startActivity(intent)
         }
     }
 }

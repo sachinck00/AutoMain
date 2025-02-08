@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:orientation="vertical"
-    android:background="@color/darkBlue"
+    android:background="@color/app_bg"
     android:paddingHorizontal="5dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,102 +18,137 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentLeft="true"
-            android:src="@drawable/back_icon"/>
+            android:src="@drawable/back"/>
         <TextView
             android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello . .  Admin"
+            android:text="Hello . Admin"
             android:layout_marginStart="50dp"
             android:layout_marginVertical="4dp"
-            android:textColor="@color/white"
+            android:textColor="@color/main_text"
             android:textSize="23dp" />
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/almond"
+        android:background="@color/sub_text"
         android:layout_marginHorizontal="3dp"
         android:layout_marginVertical="2dp"/>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:background="@drawable/border"
+        android:layout_margin="10dp"
+        android:paddingVertical="10dp">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="5dp"
+            android:src="@drawable/user"/>
         <TextView
             android:id="@+id/editProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
             android:text="Complete Profile"
-            android:layout_margin="10dp"
-            android:paddingVertical="10dp"
-            android:paddingLeft="10dp"
-            android:background="@drawable/border"
-            android:textColor="@color/white"
+            android:textColor="@color/main_text"
             android:textSize="20dp" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:background="@drawable/border"
+        android:layout_margin="10dp"
+        android:paddingVertical="10dp">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="5dp"
+            android:src="@drawable/request"/>
         <TextView
             android:id="@+id/requests"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
             android:text="My Requests"
-            android:layout_margin="10dp"
-            android:paddingVertical="10dp"
-            android:paddingLeft="10dp"
-            android:background="@drawable/border"
-            android:textColor="@color/white"
+            android:textColor="@color/main_text"
             android:textSize="20dp" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:background="@drawable/border"
+        android:layout_margin="10dp"
+        android:paddingVertical="10dp">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="5dp"
+            android:src="@drawable/add2"/>
         <TextView
             android:id="@+id/add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
             android:text="Add a new service"
-            android:layout_margin="10dp"
-            android:paddingVertical="10dp"
-            android:paddingLeft="10dp"
-            android:background="@drawable/border"
-            android:textColor="@color/white"
+            android:textColor="@color/main_text"
             android:textSize="20dp" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:background="@drawable/border"
+        android:layout_margin="10dp"
+        android:paddingVertical="10dp">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="5dp"
+            android:src="@drawable/history"/>
         <TextView
             android:id="@+id/history"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
             android:text="History"
-            android:layout_margin="10dp"
-            android:paddingVertical="10dp"
-            android:paddingLeft="10dp"
-            android:background="@drawable/border"
-            android:textColor="@color/white"
+            android:textColor="@color/main_text"
             android:textSize="20dp" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:background="@drawable/border"
+        android:layout_margin="10dp"
+        android:paddingVertical="10dp">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="5dp"
+            android:src="@drawable/logout"/>
         <TextView
             android:id="@+id/logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Log out"
-            android:layout_margin="10dp"
-            android:paddingVertical="10dp"
-            android:paddingLeft="10dp"
-            android:background="@drawable/border"
-            android:textColor="@color/white"
+            android:layout_marginHorizontal="40dp"
+            android:textColor="@color/main_text"
             android:textSize="20dp" />
     </RelativeLayout>
 

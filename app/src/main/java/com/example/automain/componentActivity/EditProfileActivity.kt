@@ -45,7 +45,6 @@ class EditProfileActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
             }
-
         }
 
         binding.update.setOnClickListener {

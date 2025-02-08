@@ -4,13 +4,15 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    android:background="@color/darkBlue"
+    android:background="@color/app_bg"
     tools:context=".user.fragments.Enquiry">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="@drawable/list_border"
+        android:layout_margin="15dp"
         android:padding="16dp">
         <RelativeLayout
             android:layout_width="match_parent"
@@ -20,8 +22,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Provide Custom Service ,"
-                android:textColor="@color/white"
+                android:text="Provide Custom Service "
+                android:textColor="@color/main_text"
                 android:textSize="20dp" />
         </RelativeLayout>
         <RelativeLayout
@@ -33,63 +35,52 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <EditText
-                        android:id="@+id/service"
+                        android:id="@+id/serviceName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Service "
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white"
+                        android:hint="Service Name"
+                        android:textColor="@color/sub_text"
+                        android:textColorHint="@color/sub_text"
                         android:background="@drawable/input_bg"
                         android:padding="15dp"
                         android:layout_marginTop="20dp"
                         android:inputType="text"/>
                     <EditText
-                        android:id="@+id/time"
+                        android:id="@+id/vehicleName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Time required"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white"
+                        android:hint="vehicle Name"
+                        android:textColor="@color/sub_text"
+                        android:textColorHint="@color/sub_text"
                         android:background="@drawable/input_bg"
                         android:padding="15dp"
                         android:layout_marginTop="15dp"
                         android:inputType="text"/>
 
                     <EditText
-                        android:id="@+id/warrranty"
+                        android:id="@+id/vehicleModel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
                         android:background="@drawable/input_bg"
-                        android:hint="Warrranty"
+                        android:hint="Vehicle Model"
                         android:inputType="text"
                         android:padding="15dp"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white" />
+                        android:textColor="@color/sub_text"
+                        android:textColorHint="@color/sub_text"/>
 
                     <EditText
-                        android:id="@+id/recommendation"
+                        android:id="@+id/vehicleNumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Recommendation time"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white"
+                        android:hint="vehicle Number"
+                        android:textColor="@color/sub_text"
+                        android:textColorHint="@color/sub_text"
                         android:background="@drawable/input_bg"
                         android:padding="15dp"
                         android:layout_marginTop="15dp"
                         android:inputType="text"/>
 
-                    <EditText
-                        android:id="@+id/servicecount"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:background="@drawable/input_bg"
-                        android:hint="Number of Services"
-                        android:inputType="text"
-                        android:padding="15dp"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white" />
                     <!-- TextView to display the full address -->
                     <TextView
                         android:id="@+id/locationTextView"
@@ -97,39 +88,28 @@
                         android:padding="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:text="Location will appear here"
-                        android:textSize="18sp" />
+                        android:textColor="@color/sub_text"
+                        android:text="Location will appear here , please wait"
+                        android:textSize="14sp" />
 
                     <!-- Button to trigger location fetch -->
                     <Button
                         android:id="@+id/getLocationButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/darkBlue"
-                        android:backgroundTint="@color/white"
+                        android:textColor="@color/main_text"
+                        android:backgroundTint="@color/button_bg"
                         android:paddingHorizontal="20dp"
                         android:text="Get Your Location" />
 
-                    <EditText
-                        android:id="@+id/rate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Amount"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white"
-                        android:background="@drawable/input_bg"
-                        android:padding="15dp"
-                        android:layout_marginTop="15dp"
-                        android:inputType="text"/>
 
                     <Button
                         android:id="@+id/submitBtn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Submit"
-                        android:textColor="@color/darkBlue"
-                        android:backgroundTint="@color/white"
+                        android:textColor="@color/main_text"
+                        android:backgroundTint="@color/button_bg"
                         android:textSize="20dp"
                         android:padding="10dp"
                         android:layout_marginTop="15dp" />

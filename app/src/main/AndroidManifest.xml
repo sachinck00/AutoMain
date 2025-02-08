@@ -13,6 +13,7 @@
         android:name="android.permission.ACCESS_BACKGROUND_LOCATION"
         android:maxSdkVersion="29"
         tools:ignore="WrongManifestParent" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -24,6 +25,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AutoMain"
         tools:targetApi="31">
+        <activity
+            android:name=".admin.utils.requestList.RequestDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.utils.RequestsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.utils.RequestHandleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.utils.RequestServiceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.utils.RequestServiceActivity"
+            android:exported="false" />
         <activity
             android:name=".componentActivity.EditProfileActivity"
             android:exported="false" />
