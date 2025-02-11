@@ -15,6 +15,8 @@ import com.example.automain.user.UserActivity
 
 import com.example.components.getDocumentByEmailAndDB
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.firestore.FirebaseFirestore
 
 class LoginActivity : AppCompatActivity() {
@@ -63,32 +65,19 @@ class LoginActivity : AppCompatActivity() {
                                     finish()
                                 }  else {
                                     Toast.makeText(
-                                        baseContext,
+                                        this,
                                         "Authentication failed.",
                                         Toast.LENGTH_SHORT,
                                     ).show()
                                 }
                             }
-                           /* db.collection("users")
-                                .whereEqualTo("email", email)
-                                .get()
-                                .addOnSuccessListener { documents ->
-                                    for (document in documents) {
-                                        if (document.get("isAdmin") == true) {
-                                            val intent = Intent(this, AdminActivity::class.java)
-                                            startActivity(intent)
-                                        }else {
-                                            val intent = Intent(this, UserActivity::class.java)
-                                            startActivity(intent)
-                                        }
-                                        Toast.makeText(
-                                            this,
-                                            "welcome ${document.get("name")}",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                        finish()
-                                    }
-                                }*/
+                        }else {
+                            val errorMessage = when (task.exception) {
+                                is FirebaseAuthInvalidUserException -> "No account found with this email."
+                                is FirebaseAuthInvalidCredentialsException -> "Incorrect password."
+                                else -> "Authentication failed."
+                            }
+                            Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
                         }
                     }
 

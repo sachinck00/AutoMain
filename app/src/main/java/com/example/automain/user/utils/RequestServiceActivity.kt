@@ -22,20 +22,22 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.automain.R
-import com.example.automain.databinding.ActivityEditServiceBinding
 import com.example.automain.databinding.ActivityRequestServiceBinding
 import com.example.automain.user.UserActivity
+import com.example.components.fetchAdminToken
 import com.example.components.fetchCurrentUserEmail
 import com.example.components.getCurrentDateTime
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Locale
 
 class RequestServiceActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRequestServiceBinding
     private lateinit var db : FirebaseFirestore
+    private lateinit var auth : FirebaseAuth
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     val CHANNEL_ID = "channel_id"
@@ -103,6 +105,13 @@ class RequestServiceActivity : AppCompatActivity() {
                 db.collection("serviceRequests").add(request)
                     .addOnSuccessListener {
                         clear()
+                        fetchAdminToken { result ->
+                            if (result != null){
+                                val receiverId = result
+                                val service = serviceName // Example service name
+                                //sendNotificationToUser(receiverId, service)
+                            }
+                        } // Replace with actual User B IDExample service name
                         var intent = Intent(this , UserActivity::class.java)
                         startActivity(intent)
                         Toast.makeText(
@@ -121,6 +130,8 @@ class RequestServiceActivity : AppCompatActivity() {
             }
 
         }
+
+
 
 
         //fetch location
@@ -144,6 +155,7 @@ class RequestServiceActivity : AppCompatActivity() {
         binding.vehicleNumber.text = null
         binding.VehicleModel.text = null
     }
+
 
 
     private fun getCurrentLocation() {
@@ -180,6 +192,7 @@ class RequestServiceActivity : AppCompatActivity() {
                 }
             })
     }
+
 
     private fun getAddressFromLocation(latitude: Double, longitude: Double) {
         val geocoder = Geocoder(this, Locale.getDefault())

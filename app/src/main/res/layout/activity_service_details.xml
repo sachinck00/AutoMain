@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:orientation="vertical"
-    android:background="@color/app_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/app_bg"
     tools:context=".admin.serviceList.ServiceDetailsActivity">
-
     <!-- Back Button -->
     <RelativeLayout
         android:layout_width="match_parent"
@@ -25,7 +24,7 @@
             android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Request Service"
+            android:text="About Service"
             android:layout_centerInParent="true"
             android:layout_marginHorizontal="60dp"
             android:textColor="@color/main_text"
@@ -128,4 +127,5 @@
                 android:paddingVertical="12dp" />
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

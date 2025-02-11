@@ -1,7 +1,6 @@
 package com.example.automain.user.fragments
 
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
@@ -14,16 +13,14 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.example.automain.R
 import com.example.automain.databinding.FragmentEnquiryBinding
-import com.example.automain.user.UserActivity
 import com.example.components.fetchCurrentUserEmail
 import com.example.components.getCurrentDateTime
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.*
+import java.util.Locale
 
 class Enquiry : Fragment() {
 
@@ -67,7 +64,7 @@ class Enquiry : Fragment() {
             var time = getCurrentDateTime()
             var userEmail = fetchCurrentUserEmail()
 
-            if (vehicleName != null && vehicleModel != null && vehicleNumber != null && location != null && serviceName != null && userEmail != null && time != null) {
+            if (vehicleName.isNotEmpty() && vehicleModel.isNotEmpty() && vehicleNumber.isNotEmpty() && location.isNotEmpty() && serviceName.isNotEmpty() && userEmail.isNotEmpty() && time.isNotEmpty()) {
                 var request = hashMapOf(
                     "userEmail" to userEmail,
                     "serviceName" to serviceName,

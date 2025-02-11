@@ -2,6 +2,7 @@ package com.example.automain
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,8 @@ import com.example.components.checkIsAdmin
 import com.example.components.getDocumentByEmailAndDB
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
+import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
@@ -34,32 +37,65 @@ class MainActivity : AppCompatActivity() {
         }
 
         db = FirebaseFirestore.getInstance()
-        checkIsAdmin { result ->
-            if (result == 1) {
-                val intent = Intent(this, AdminActivity::class.java)
-                startActivity(intent)
-            } else {
-                val intent = Intent(this, UserActivity::class.java)
-                startActivity(intent)
+        auth = FirebaseAuth.getInstance()
+        if (auth.currentUser != null){
+            // User is signed in
+            checkIsAdmin { result ->
+                if (result == 1) {
+                    val intent = Intent(this, AdminActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    val intent = Intent(this, UserActivity::class.java)
+                    startActivity(intent)
+                }
+                finish()
             }
-            Toast.makeText(
-                this,
-                "Welcome ",
-                Toast.LENGTH_SHORT
-            ).show()
-            finish()
+        }else{
+            // No user is signed in . do nothing
         }
+
         binding.signin.setOnClickListener {
-            Toast.makeText(this, "signin here", Toast.LENGTH_SHORT)
+            Toast.makeText(this, "Login here", Toast.LENGTH_SHORT)
             val intent = Intent(this , LoginActivity::class.java)
             startActivity(intent)
         }
         binding.register.setOnClickListener {
-            Toast.makeText(this, "signin here", Toast.LENGTH_SHORT)
+            Toast.makeText(this, "Register here", Toast.LENGTH_SHORT)
             val intent = Intent(this , RegisterActivity::class.java)
             startActivity(intent)
         }
 
-    }
+        saveFCMToken()
 
+    }
+    private fun saveFCMToken() {
+        val email = auth.currentUser?.email ?: return
+        val db = FirebaseFirestore.getInstance()
+
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w("FCM", "Fetching FCM token failed", task.exception)
+                Toast.makeText(this, "Fetching FCM token failed", Toast.LENGTH_SHORT)
+                return@addOnCompleteListener
+            }
+            val token = task.result
+            db.collection("users")
+                .whereEqualTo("email", email)
+                .get()
+                .addOnSuccessListener { documents ->
+                    if (!documents.isEmpty) {
+                        for (document in documents) {
+                            val userRef = db.collection("users").document(document.id)
+
+                            // Update specific fields in the found document
+                            userRef.update("fcmToken", token)
+                                .addOnFailureListener {
+                                    userRef.set(mapOf("fcmToken" to token), SetOptions.merge())
+                                }
+                        }
+                    }
+
+                }
+        }
+    }
 }

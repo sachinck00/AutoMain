@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
             android:layout_centerInParent="true"
-            android:text="Complete Profile"
+            android:text="Edit Profile"
             android:textColor="@color/main_text"
             android:textSize="18dp" />
     </RelativeLayout>
@@ -73,14 +73,38 @@
             android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
             android:layout_marginHorizontal="5dp"
-            android:src="@drawable/request"/>
+            android:src="@drawable/pending"/>
         <TextView
-            android:id="@+id/requests"
+            android:id="@+id/pendingRequests"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
             android:layout_centerInParent="true"
-            android:text="My Requests"
+            android:text="Pending Requests"
+            android:textColor="@color/main_text"
+            android:textSize="18dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/border"
+        android:layout_margin="15dp"
+        android:paddingVertical="10dp">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="5dp"
+            android:src="@drawable/completed"/>
+        <TextView
+            android:id="@+id/completedRequests"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_centerInParent="true"
+            android:text="Completed Requests"
             android:textColor="@color/main_text"
             android:textSize="18dp" />
     </RelativeLayout>

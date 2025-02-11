@@ -1,9 +1,13 @@
 package com.example.automain.admin
 
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,8 +19,11 @@ import com.example.automain.admin.serviceList.Services
 import com.example.automain.admin.utils.MenuActivity
 import com.example.automain.componentActivity.ProfileActivity
 import com.example.automain.databinding.ActivityAdminBinding
+
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+
+import java.util.jar.Manifest
 
 class AdminActivity : AppCompatActivity() {
     private lateinit var binding : ActivityAdminBinding
@@ -25,6 +32,8 @@ class AdminActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var serviceAdapter: ServiceAdapter
     private val serviceItemList = mutableListOf<Services>()
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +45,10 @@ class AdminActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
+        // Start Firestore listener
+
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 

@@ -10,6 +10,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.automain.R
 import com.example.automain.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterActivity : AppCompatActivity() {
@@ -28,9 +30,9 @@ class RegisterActivity : AppCompatActivity() {
         }
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
-        if(auth.currentUser!=null){
+       /* if(auth.currentUser!=null){
             finish()
-        }
+        }*/
 
         binding.submitBtn.setOnClickListener {
             val emailId = binding.email.text.toString()
@@ -65,15 +67,17 @@ class RegisterActivity : AppCompatActivity() {
 
                                 var intent = Intent(this , LoginActivity::class.java)
                                 startActivity(intent)
-                            } else {
-                                Toast.makeText(
-                                    this,
-                                    "Authentication failed.",
-                                    Toast.LENGTH_SHORT,
-                                ).show()
-
+                            }else {
+                                val errorMessage = when (task.exception) {
+                                    is FirebaseAuthUserCollisionException -> "This email is already in use."
+                                    is FirebaseAuthWeakPasswordException -> "The password is too weak."
+                                    else -> "Authentication failed."
+                                }
+                                Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
                             }
                         }
+                }
+                else{
                     Toast.makeText(this, "password and confirm password not same" , Toast.LENGTH_SHORT).show()
                 }
             }else{

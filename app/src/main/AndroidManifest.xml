@@ -15,6 +15,7 @@
         tools:ignore="WrongManifestParent" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -25,6 +26,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AutoMain"
         tools:targetApi="31">
+
+        <activity
+            android:name=".admin.serviceList.ServiceDetailsActivity"
+            android:exported="false" />
         <activity
             android:name=".admin.utils.requestList.RequestDetailsActivity"
             android:exported="false" />
@@ -44,9 +49,6 @@
             android:name=".componentActivity.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".admin.serviceList.ServiceDetailsActivity"
-            android:exported="false" />
-        <activity
             android:name=".user.utils.UserMenuActivity"
             android:exported="false" />
         <activity
@@ -58,7 +60,7 @@
         <activity
             android:name=".admin.AdminActivity"
             android:exported="false"
-            android:theme="@style/Theme.AutoMain"/>
+            android:theme="@style/Theme.AutoMain" />
         <activity
             android:name=".user.UserActivity"
             android:exported="false" />

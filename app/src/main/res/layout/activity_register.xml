@@ -90,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Submit"
-            android:textColor="@color/sub_text"
+            android:textColor="@color/button_text"
             android:textColorHint="@color/sub_text"
             android:backgroundTint="@color/button_bg"
             android:textSize="20dp"
